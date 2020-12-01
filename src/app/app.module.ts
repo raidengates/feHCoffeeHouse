@@ -9,6 +9,11 @@ import { PageNotFoundComponent } from "./page-not-found/page-not-found.component
 import { HeaderComponent } from "./shared/header/header.component";
 import { NavigationComponent } from "./shared/navigation/navigation.component";
 import { AuthenticatorTemplateComponent } from './template/authenticator-template.component';
+import { ValidationService } from './service/validation.service';
+import { AuthGuard } from './service/auth-guard.service';
+import { RoleGuard } from './service/role-guard.service';
+import { DataService } from './service/data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,13 +24,23 @@ import { AuthenticatorTemplateComponent } from './template/authenticator-templat
     LeftNavTemplateComponent,
     AuthenticatorTemplateComponent,
     NavigationComponent,
+
+
+    
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes, { useHash: true })
+    HttpClientModule,
+    RouterModule.forRoot(routes, { useHash: false })
   ],
-  providers: [],
+  providers: [
+    ValidationService, 
+    DataService,
+    AuthGuard,
+    RoleGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

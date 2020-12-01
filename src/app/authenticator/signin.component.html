@@ -1,36 +1,33 @@
 <div class="c-container" id="authen_container">
-
     <div class="forms-container">
       <div class="signin-signup">
-        <form action="#" class="sign-in-form">
+
+        <form class="sign-in-form" [formGroup]="loginForm" (submit)="loginUser()">
           <h2 class="title">Đăng nhập</h2>
           <div class="input-field">
             <i class="fa fa-user"></i>
-            <input type="text" placeholder="Username" />
+            <input type="text" placeholder="Username" formControlName="username" />
           </div>
           <div class="input-field">
             <i class="fa fa-lock"></i>
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" formControlName="password"/>
           </div>
-          <input type="submit" value="đăng nhập" class="btn solid" />
+
+          <input type="submit" value="đăng nhập" class="btn solid"/>
         </form>
 
-        <form action="#" class="sign-up-form">
-          <h2 class="title">Đăng ký</h2>
-          <div class="input-field">
-            <i class="glyphicon  glyphicon-user"></i>
-            <input type="text" placeholder="Username" />
-          </div>
+        <form class="sign-up-form" [formGroup]="resetForm" (submit)="resetUser()">
+          <h2 class="title">Quên mật khẩu</h2>
+         
           <div class="input-field">
             <i class="fa fa-envelope"></i>
-            <input type="email" placeholder="Email" />
+            <input type="email" placeholder="Email" formControlName="email"/>
           </div>
-          <div class="input-field">
-            <i class="fa fa-lock"></i>
-            <input type="password" placeholder="Password" />
-          </div>
-          <input type="submit" class="btn" value="Đăng ký" />
+
+        
+          <input type="submit" class="btn" value="Xác nhận" />
         </form>
+
       </div>
     </div>
 
@@ -39,10 +36,10 @@
         <div class="content">
           <h3>HCoffeeHouse</h3>
           <p>
-            HCoffeeHouse là giải pháp giúp bạn quản lý tổng thể. Nếu chưa có tài khoản vui lòng đăng ký tại đây!
+            HCoffeeHouse là giải pháp giúp bạn quản lý tổng thể cửa hàng.
           </p>
-          <button class="btn transparent" id="sign-up-btn" (click)="clickSignUp()"  >
-            Đăng ký
+          <button class="btn transparent" id="sign-up-btn" (click)="clickReset()"  >
+            Quên mật khẩu
           </button>
         </div>
         <img src="/assets/images/movie_night.svg" class="image" alt="" />
@@ -61,3 +58,4 @@
       </div>
     </div>
   </div>
+

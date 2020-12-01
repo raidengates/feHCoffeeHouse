@@ -1,0 +1,39 @@
+.c-user-manager{
+    .user-action{
+        display: flex;
+        justify-content: flex-end;
+        margin: 15px 0;
+      
+    }
+    .ua-item{
+        margin-left: 5px;
+    }
+    .actions{
+        float: right;
+        a{
+            margin-left: 5px;
+            border-radius: 5px;
+           i {
+                color: #fff;
+           }
+        }
+    }
+
+    thead{
+        th{
+            text-align: center; 
+            vertical-align: middle;
+        }
+    }
+    tbody{
+        tr{
+            td{
+                text-align: center; 
+                vertical-align: middle;
+            }
+        }
+    }
+
+
+  
+}

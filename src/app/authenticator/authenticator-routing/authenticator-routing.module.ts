@@ -12,9 +12,7 @@ const routes: Routes = [
       title: 'sign in'
     }
   },
-
   {
-
     path: 'sign-in',
     pathMatch: 'full',
     component: SignInComponent,

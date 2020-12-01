@@ -4,19 +4,23 @@ import {BlankTemplateComponent} from './template/blank-template.component';
 import {LeftNavTemplateComponent} from './template/left-nav-template.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import { AuthenticatorTemplateComponent } from './template/authenticator-template.component';
+import { AuthGuard } from './service/auth-guard.service';
 
 export const routes: Routes = [
   {
   path: '',
-  redirectTo: 'authen',
+  redirectTo: 'dashboard',
   pathMatch: 'full'
   },
 
+
+// dashboard manager
 {
   path: '',
   component: LeftNavTemplateComponent,
+  canActivate: [AuthGuard],
   data: {
-    title: 'Angular Admin Template'
+    title: 'dashboard'
   },
   children: [
     {
@@ -42,6 +46,25 @@ export const routes: Routes = [
     }
   ]
 },
+
+//account manager
+{
+  path: 'user',
+  component: LeftNavTemplateComponent,
+  canActivate: [AuthGuard],
+  data: {
+    title: 'User manager'
+  },
+  children: [
+    {
+      path: '',
+      loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
+    },
+  ]
+
+},
+
+//authen manager
 {
   path: 'authen',
   component: AuthenticatorTemplateComponent,
@@ -53,17 +76,14 @@ export const routes: Routes = [
       path: '',
       loadChildren: () => import('./authenticator/authenticator.module').then(m => m.AuthenticatorModule),
     },
-    {
-      path: 'sign-up',
-      loadChildren: () => import('./authenticator/authenticator.module').then(m => m.AuthenticatorModule),
-    },
-    
-    
   ]
 },
+
+//  tables manager
 {
   path: 'tables',
   component: LeftNavTemplateComponent,
+  canActivate: [AuthGuard],
   data: {
     title: 'Tables'
   },
